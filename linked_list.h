@@ -48,7 +48,7 @@ typedef struct LinkedList {
  * @param list Pointer to the LinkedList instance.
  * @param node Pointer to the unlinked LinkedListNode to insert.
  */
-static inline void linked_list_insert_tail_direct(LinkedList* list, LinkedListNode* node)
+static inline __attribute__((no_instrument_function)) void linked_list_insert_tail_direct(LinkedList* list, LinkedListNode* node)
 {
     node->prev = list->root.prev;
     node->next = &list->root;
@@ -65,7 +65,7 @@ static inline void linked_list_insert_tail_direct(LinkedList* list, LinkedListNo
  * @param list Pointer to the LinkedList instance.
  * @param node Pointer to the unlinked LinkedListNode to insert.
  */
-static inline void linked_list_insert_head_direct(LinkedList* list, LinkedListNode* node)
+static inline __attribute__((no_instrument_function)) void linked_list_insert_head_direct(LinkedList* list, LinkedListNode* node)
 {
     node->prev = &list->root;
     node->next = list->root.next;
@@ -82,7 +82,7 @@ static inline void linked_list_insert_head_direct(LinkedList* list, LinkedListNo
  * @param list Pointer to the LinkedList instance.
  * @param node Pointer to the linked LinkedListNode to remove.
  */
-static inline void linked_list_remove_direct(LinkedList* list, LinkedListNode* node)
+static inline __attribute__((no_instrument_function)) void linked_list_remove_direct(LinkedList* list, LinkedListNode* node)
 {
     node->prev->next = node->next;
     node->next->prev = node->prev;
@@ -99,7 +99,7 @@ static inline void linked_list_remove_direct(LinkedList* list, LinkedListNode* n
  * @param list Pointer to the LinkedList instance.
  * @return Pointer to the popped LinkedListNode, or NULL if list is empty or NULL.
  */
-static inline LinkedListNode* linked_list_pop_head(LinkedList* list)
+static inline __attribute__((no_instrument_function)) LinkedListNode* linked_list_pop_head(LinkedList* list)
 {
     if ((list == NULL) || (list->count == 0U)) {
         return NULL;
@@ -121,7 +121,7 @@ static inline LinkedListNode* linked_list_pop_head(LinkedList* list)
  * @param list Pointer to the LinkedList instance.
  * @return Pointer to the popped LinkedListNode, or NULL if list is empty or NULL.
  */
-static inline LinkedListNode* linked_list_pop_tail(LinkedList* list)
+static inline __attribute__((no_instrument_function)) LinkedListNode* linked_list_pop_tail(LinkedList* list)
 {
     if ((list == NULL) || (list->count == 0U)) {
         return NULL;
@@ -141,7 +141,7 @@ static inline LinkedListNode* linked_list_pop_tail(LinkedList* list)
  * @param list Pointer to the LinkedList instance.
  * @return Pointer to head LinkedListNode, or NULL if list is empty or NULL.
  */
-static inline LinkedListNode* linked_list_peek_head(const LinkedList* list)
+static inline __attribute__((no_instrument_function)) LinkedListNode* linked_list_peek_head(const LinkedList* list)
 {
     if ((list == NULL) || (list->count == 0U)) {
         return NULL;
@@ -155,7 +155,7 @@ static inline LinkedListNode* linked_list_peek_head(const LinkedList* list)
  * @param list Pointer to the LinkedList instance.
  * @return Pointer to tail LinkedListNode, or NULL if list is empty or NULL.
  */
-static inline LinkedListNode* linked_list_peek_tail(const LinkedList* list)
+static inline __attribute__((no_instrument_function)) LinkedListNode* linked_list_peek_tail(const LinkedList* list)
 {
     if ((list == NULL) || (list->count == 0U)) {
         return NULL;
@@ -169,7 +169,7 @@ static inline LinkedListNode* linked_list_peek_tail(const LinkedList* list)
  * @param list Pointer to the LinkedList instance.
  * @return true if empty or list is NULL, false otherwise.
  */
-static inline bool linked_list_is_empty(const LinkedList* list)
+static inline __attribute__((no_instrument_function)) bool linked_list_is_empty(const LinkedList* list)
 {
     return ((list == NULL) || (list->count == 0U));
 }
@@ -180,7 +180,7 @@ static inline bool linked_list_is_empty(const LinkedList* list)
  * @param list Pointer to the LinkedList instance.
  * @return Total element count, or 0 if list is NULL.
  */
-static inline size_t linked_list_count(const LinkedList* list)
+static inline __attribute__((no_instrument_function)) size_t linked_list_count(const LinkedList* list)
 {
     return (list != NULL) ? list->count : 0U;
 }
